@@ -1,0 +1,14 @@
+mise en place de bootstrap
+fixtures 
+initialisation des slugs + createdAt
+administration avec easyadmin 3
+mise en place vichupload
+mise en place de ck-editor + elfinder 
+systeme de pagination
+systeme de recherche
+mettre en place le reCaptcha pour les commentaires
+mise en place des recommendations article sur la page détail
+
+mise en place d'un systeme de dons (coffee)
+mise en place des test unitaires & fonctionnels
+ajustement design 
