@@ -1,6 +1,6 @@
-mise en place de bootstrap
-fixtures 
-initialisation des slugs + createdAt
+mise en place de bootstrap __ok
+fixtures __ok
+initialisation createdAt __ok
 administration avec easyadmin 3
 mise en place vichupload
 mise en place de ck-editor + elfinder 

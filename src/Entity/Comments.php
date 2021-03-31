@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\CommentsRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CommentsRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=CommentsRepository::class)
@@ -37,7 +38,7 @@ class Comments
     /**
      * @ORM\Column(type="boolean")
      */
-    private $active;
+    private $active = 0;
 
     /**
      * @ORM\Column(type="text")
@@ -60,9 +61,15 @@ class Comments
      */
     private $replies;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
     public function __construct()
     {
         $this->replies = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int
@@ -180,6 +187,18 @@ class Comments
                 $reply->setParent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
