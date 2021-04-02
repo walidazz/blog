@@ -3,12 +3,13 @@ fixtures __ok
 initialisation createdAt __ok
 administration avec easyadmin 3 __ok
 mise en place vichupload __ok
-mise en place de ck-editor + elfinder 
-systeme de pagination
+mise en place de ck-editor + elfinder ok_
+systeme de pagination 
 systeme de recherche
+mettre en place les commentaires
 mettre en place le reCaptcha pour les commentaires
 mise en place des recommendations article sur la page détail
-
+redimmensionner les images imagine
 mise en place d'un systeme de dons (coffee)
 mise en place des test unitaires & fonctionnels
 ajustement design 

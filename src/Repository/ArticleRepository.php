@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Article;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
@@ -35,6 +36,45 @@ class ArticleRepository extends ServiceEntityRepository
         ;
     }
     */
+
+
+    /**
+     * @return Query
+     */
+    public function findAllQuery(): Query
+    {
+        return $this->createQueryBuilder('a')
+
+            ->orderBy('a.createdAt', 'DESC')
+            // ->setMaxResults(10)
+            ->getQuery();
+    }
+
+    public function search($mots): Query
+    {
+        return $this->createQueryBuilder('a')
+            ->where('MATCH_AGAINST(a.titre,a.content) AGAINST(:mots boolean)>0')
+            ->setParameter('mots', $mots)
+            ->orderBy('a.createdAt', 'DESC')
+            ->getQuery();
+    }
+
+    /**
+     * @return Query
+     */
+    public function findAllByCategory($value): Query
+    {
+        return $this->createQueryBuilder('a')
+
+            ->orderBy('a.createdAt', 'DESC')
+            ->join('a.category', 'c')
+            // ->select('a as article, c.libelle')
+            ->andWhere('c.libelle = :val')
+            ->setParameter('val', $value)
+            ->orderBy('a.createdAt', 'DESC')
+            ->getQuery();
+    }
+
 
     /*
     public function findOneBySomeField($value): ?Article
