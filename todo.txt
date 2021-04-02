@@ -1,8 +1,8 @@
 mise en place de bootstrap __ok
 fixtures __ok
 initialisation createdAt __ok
-administration avec easyadmin 3
-mise en place vichupload
+administration avec easyadmin 3 __ok
+mise en place vichupload __ok
 mise en place de ck-editor + elfinder 
 systeme de pagination
 systeme de recherche
