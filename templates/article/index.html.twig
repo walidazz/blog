@@ -4,12 +4,46 @@
 
 {% block body %}
 
+<div class="container">
+
+    <p class="m-5"> Liste des articles qui tournent autour de l’écosystème de Symfony et ses composants qui l’entourent.
+    </p>
+
+    {% for article in articles %}
+
+    <div class="row m-4 bg-white p-3">
+
+        <div class="col-6 m-2">
+            <img src="{{asset('uploads/article_image/' ~ article.coverImage)}}" alt="" height="250" width="250">
+        </div>
+        <div class="col-6 row">
+            <a href="">
+                <h5>{{article.category.libelle}} </h5>
+            </a>
+            <a href="{{path('detail_article', { 'slug' : article.slug})}}">
+
+                <h6 class="font-weight-bold"> {{article.titre}}</h6>
+            </a>
+            <p> {{ (article.content|u.truncate(200,'...')|raw) }} </p>
+            <hr>
+            <div class="row">
+                <div class="col-md-6  text-left"> {{article.comments|length}} commentaire</div>
+                <div class="col-md-6 text-right"> {{article.createdAt|date("m/d/Y", "Europe/Paris")}}</div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    {% endfor %}
+
+
+</div>
 
 
 <div class="pagination">
     <div class="mx-auto">
-
-
         {{ knp_pagination_render(articles) }}
     </div>
 </div>

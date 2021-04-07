@@ -1,20 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ArticleController!{% endblock %}
+{% block title %}Blog{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="container">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/walid/Desktop/blog/src/Controller/ArticleController.php'|file_link(0) }}">src/Controller/ArticleController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/walid/Desktop/blog/templates/article/index.html.twig'|file_link(0) }}">templates/article/index.html.twig</a></code></li>
-    </ul>
+    <p class="m-5"> Détail
+    </p>
+
+    <!-- https://www.bootdey.com/snippets/view/blog-detail-page#css -->
+
+    <div class="row m-4 bg-white p-3">
+
+        <div class="col-6 m-2">
+            <img src="{{asset('uploads/article_image/' ~ article.coverImage)}}" alt="" height="250" width="250">
+        </div>
+        <div class="col-6 row">
+            <a href="">
+                <h5>{{article.category.libelle}} </h5>
+            </a>
+            <a href="{{path('detail_article', { 'slug' : article.slug})}}">
+
+                <h6 class="font-weight-bold"> {{article.titre}}</h6>
+            </a>
+            <p> {{ (article.content|u.truncate(200,'...')|raw) }} </p>
+            <hr>
+            <div class="row">
+                <div class="col-md-6  text-left"> {{article.comments|length}} commentaire</div>
+                <div class="col-md-6 text-right"> {{article.createdAt|date("m/d/Y", "Europe/Paris")}}</div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
 </div>
+
+
 {% endblock %}

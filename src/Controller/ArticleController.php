@@ -33,10 +33,10 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/{libelle}", name="article_category_list")
      */
-    public function articlelList($libelle, PaginatorInterface $paginator, Request $request)
+    public function articlelList($libelle, PaginatorInterface $paginator, Request $request, ArticleRepository $repo)
     {
 
-        $query    = $this->repo->findAllByCategory($libelle);
+        $query    = $repo->findAllByCategory($libelle);
         $articles = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
@@ -47,7 +47,7 @@ class ArticleController extends AbstractController
 
 
     /**
-     * @Route("/article/{slug}", name="detail_article")
+     * @Route("/article/detail/{slug}", name="detail_article")
      */
     public function detail(Article $article): Response
     {
