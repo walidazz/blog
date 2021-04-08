@@ -6,9 +6,10 @@ use App\Entity\Comments;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class CommentType extends AbstractType
 {
@@ -18,10 +19,10 @@ class CommentType extends AbstractType
             ->add('email', EmailType::class,  ['label' => 'Email'])
             ->add('pseudo', TextType::class, ['label' => 'Pseudo'])
             ->add('website',  UrlType::class, ['label' => 'Site web'])
-
+            ->add('parentid', HiddenType::class, [
+                'mapped' => false
+            ])
             ->add('content', TextType::class,  ['label' => 'Contenu']);
-
-        
     }
 
     public function configureOptions(OptionsResolver $resolver)

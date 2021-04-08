@@ -31,8 +31,46 @@
                 <div class="col-md-6 text-right"> {{article.createdAt|date("m/d/Y", "Europe/Paris")}}</div>
             </div>
         </div>
+        <div class="row">
+            <h6> Poster un commentaire</h6>
+            {{form(form)}}
+        </div>
+
+        <div class="row">
+            <h5>Liste des commentaires </h5>
+            {% for comment in article.comments %}
+            {% if comment.parent is null %}
+            <p> Auteur : {{comment.pseudo}}</p>
+            <p> {{comment.content }}</p>
+            {% endif %}
+            <a class="responseButton" href="#form{{comment.id}}" data-id="{{comment.id}}"> répondre à {{ comment.pseudo}}</a>
+            <form id="form{{comment.id}}" class="form-inline my-1 my-lg-0 mx-2 d-none"
+                action="{{path('repply_comment', { 'id' : comment.id})}}" method="POST">
+                <input class="form-control mr-sm-1" name="pseudo" placeholder="pseudo" aria-label="pseudo" />
+                <input class="form-control mr-sm-1" name="email" placeholder="email" aria-label="email" />
+                <input class="form-control mr-sm-1" name="website" placeholder="website" aria-label="website" />
+                <input class="form-control mr-sm-1" name="content" placeholder="content" aria-label="content" />
+
+                <button class="btn btn-outline-success  my-sm-0" type="submit">
+                    Répondre
+                </button>
+            </form>
+            <hr>
+            {% for replies in comment.replies %}
+            <div class="row">
+                <div class="col-md-6">
+                    <p> réponse de auteur : {{replies.pseudo}} </p>
+                    <p> content {{replies.content}} </p>
+                </div>
+            </div>
+
+            {% endfor %}
 
 
+
+            {% endfor %}
+
+        </div>
 
     </div>
 
