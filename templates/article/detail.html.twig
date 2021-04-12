@@ -39,11 +39,12 @@
         <div class="row">
             <h5>Liste des commentaires </h5>
             {% for comment in article.comments %}
-            {% if comment.parent is null %}
+            {% if comment.parent is null and comment.active > 0 %}
             <p> Auteur : {{comment.pseudo}}</p>
             <p> {{comment.content }}</p>
-            {% endif %}
-            <a class="responseButton" href="#form{{comment.id}}" data-id="{{comment.id}}"> répondre à {{ comment.pseudo}}</a>
+
+            <a class="responseButton" href="#form{{comment.id}}" data-id="{{comment.id}}"> répondre à {{
+                comment.pseudo}}</a>
             <form id="form{{comment.id}}" class="form-inline my-1 my-lg-0 mx-2 d-none"
                 action="{{path('repply_comment', { 'id' : comment.id})}}" method="POST">
                 <input class="form-control mr-sm-1" name="pseudo" placeholder="pseudo" aria-label="pseudo" />
@@ -55,14 +56,19 @@
                     Répondre
                 </button>
             </form>
-            <hr>
+            {% endif %}
+
             {% for replies in comment.replies %}
+
+            {% if replies.active > 0 %}
             <div class="row">
                 <div class="col-md-6">
                     <p> réponse de auteur : {{replies.pseudo}} </p>
                     <p> content {{replies.content}} </p>
                 </div>
             </div>
+            {% endif %}
+
 
             {% endfor %}
 

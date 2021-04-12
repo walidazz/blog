@@ -6,8 +6,8 @@ mise en place vichupload __ok
 mise en place de ck-editor + elfinder ok_
 systeme de pagination _ ok
 systeme de recherche _ ok
-mettre en place les commentaires 
-mettre en place le reCaptcha pour les commentaires
+mettre en place les commentaires _ok
+mettre en place le reCaptcha pour les commentaires non
 mise en place des recommendations article sur la page détail
 redimmensionner les images imagine
 mise en place d'un systeme de dons (coffee)

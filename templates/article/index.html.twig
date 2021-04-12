@@ -27,7 +27,16 @@
             <p> {{ (article.content|u.truncate(200,'...')|raw) }} </p>
             <hr>
             <div class="row">
-                <div class="col-md-6  text-left"> {{article.comments|length}} commentaire</div>
+                <div class="col-md-6  text-left">
+
+                    {% set sum = 0 %}
+                    {% for comment in article.comments %}
+                    {% if comment.active > 0 %} {% set sum=sum + 1 %} {% endif %} {% endfor %}
+                    {{sum}}   {% if sum > 0 %}
+                        commentaires
+                        {% else %}
+                        commentaire
+                    {% endif %}  </div>
                 <div class="col-md-6 text-right"> {{article.createdAt|date("m/d/Y", "Europe/Paris")}}</div>
             </div>
         </div>

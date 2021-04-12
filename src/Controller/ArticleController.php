@@ -21,7 +21,7 @@ class ArticleController extends AbstractController
      */
     public function index(PaginatorInterface $paginator, Request $request, ArticleRepository $repo): Response
     {
-        $em = $this->getDoctrine()->getRepository(Article::class);
+       // $em = $this->getDoctrine()->getRepository(Article::class);
 
         $query    = $repo->findAllQuery();
         $articles = $paginator->paginate(
