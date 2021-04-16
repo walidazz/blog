@@ -68,7 +68,7 @@ class ArticleController extends AbstractController
             $this->addFlash('success', 'Commentaire posté avec succes !');
         }
 
-        return $this->render('article/detail.html.twig', [
+        return $this->render('shared/_detail.html.twig', [
             'article' => $article, 'form' => $form->createView()
         ]);
     }

@@ -19,4 +19,4 @@ liip_imagine:
             quality: 75
             filters:
                 # use and setup the "fixed" filter
-                thumbnail: { size: [350, 350], mode: outbound }
+                thumbnail: { size: [380,350], mode: outbound }

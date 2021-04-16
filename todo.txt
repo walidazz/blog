@@ -13,3 +13,12 @@ redimmensionner les images imagine
 mise en place d'un systeme de dons (coffee)
 mise en place des test unitaires & fonctionnels
 ajustement design 
+
+
+design: 
+
+index  https://www.bootdey.com/snippets/view/Latest-News-Blog 
+
+detail  https://www.bootdey.com/snippets/view/blog-detail-page 
+
+comment : https://www.bootdey.com/snippets/view/blog-comments

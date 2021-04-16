@@ -1,0 +1,42 @@
+<section class="home-blog ">
+    <div class="container">
+        <!-- section title ends -->
+        <div class="row ">
+
+            {% for article in articles %}
+
+
+            <div class="col ">
+                <div class="media blog-media bg-light ">
+                    <a href="{{path('detail_article', { 'slug' : article.slug})}}"><img class="d-flex"
+                            src="{{asset('uploads/article_image/' ~ article.coverImage) | imagine_filter('card') }}"
+                            alt="Generic placeholder image"></a>
+                    <div class="circle">
+                        <h5 class="day">{{article.createdAt|date("d", "Europe/Paris")}}</h5>
+                        <span class="month">{{article.createdAt|date("F")|u.truncate(3)}}</span>
+                    </div>
+                    <div class="media-body">
+                        <a href="{{path('detail_article', { 'slug' : article.slug})}}">
+                            <h5 class="mt-0">{{article.titre}}</h5>
+                        </a>
+                        {{ (article.content|u.truncate(150,'...')|raw) }}
+                        <a href="{{path('detail_article', { 'slug' : article.slug})}}" class="post-link">Lire plus</a>
+                        <ul>
+                            <li> publié par l'admin</li>
+                            <li class="text-right"><a href="blog-post-left-sidebar.html">{% set sum = 0 %}
+                                    {% for comment in article.comments %}
+                                    {% if comment.active > 0 %} {% set sum=sum + 1 %} {% endif %} {% endfor %}
+                                    {{sum}} {% if sum > 0 %}
+                                    commentaires
+                                    {% else %}
+                                    commentaire
+                                    {% endif %}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</section>

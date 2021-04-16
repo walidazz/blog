@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{article.titre}}{% endblock %}
+
+{% block body %}
+
+<div class="blog-single gray-bg">
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col m-15px-tb">
+                <article class="article">
+                    <div class="article-img">
+                        <img src="{{asset('uploads/article_image/' ~ article.coverImage) | imagine_filter('detail') }}"
+                            title="" alt="">
+                    </div>
+                    <div class="article-title">
+                        <h6><a href="#">{{article.category.libelle}}</a></h6>
+                        <h2>{{article.titre}}</h2>
+                        <div class="media">
+                            <div class="avatar">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" title="" alt="">
+                            </div>
+                            <div class="media-body">
+                                <label>Admin</label>
+                                <span>{{article.createdAt|date("m/d/Y", "Europe/Paris")}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        {{ (article.content|u.truncate(200,'...')|raw) }}
+                    </div>
+
+                </article>
+                <div class="contact-form article-comment">
+                    <h4>Laisser un commentaire</h4>
+                    <form id="contact-form" method="POST">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input name="Name" id="name" placeholder="Name *" class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input name="Email" id="email" placeholder="Email *" class="form-control"
+                                        type="email">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea name="message" id="message" placeholder="Your message *" rows="4"
+                                        class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="send">
+                                    <button class="px-btn theme"><span>Submit</span> <i class="arrow"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
