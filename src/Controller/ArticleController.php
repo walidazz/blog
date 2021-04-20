@@ -21,7 +21,7 @@ class ArticleController extends AbstractController
      */
     public function index(PaginatorInterface $paginator, Request $request, ArticleRepository $repo): Response
     {
-       // $em = $this->getDoctrine()->getRepository(Article::class);
+        // $em = $this->getDoctrine()->getRepository(Article::class);
 
         $query    = $repo->findAllQuery();
         $articles = $paginator->paginate(
@@ -53,7 +53,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/detail/{slug}", name="detail_article")
      */
-    public function detail(Article $article, Request $request, EntityManagerInterface $em): Response
+    public function detail(Article $article, CommentsRepository $repo, Request $request, EntityManagerInterface $em): Response
     {
 
         $comment = new Comments();
@@ -65,34 +65,11 @@ class ArticleController extends AbstractController
             $comment->setArticle($article);
             $em->persist($comment);
             $em->flush();
-            $this->addFlash('success', 'Commentaire posté avec succes !');
+            $this->addFlash('success', 'Le commentaire sera publié apres vérification auprès d\'un modérateur !');
         }
 
         return $this->render('shared/_detail.html.twig', [
-            'article' => $article, 'form' => $form->createView()
+            'article' => $article, 'form' => $form->createView(), 'comments' => $repo->findCommentActive($article)
         ]);
-    }
-
-    /**
-     * @Route("/article/repplyComment/{id}", name="repply_comment" , methods={"POST"})
-     */
-    public function response($id, Request $request, CommentsRepository $repo, EntityManagerInterface $em): Response
-    {
-
-        $parent = $repo->find($id);
-
-        $request->request->get('pseudo');
-        $comment = new Comments();
-        $comment->setArticle($parent->getArticle())
-            ->setParent($parent)
-            ->setContent($request->request->get('content'))
-            ->setEmail($request->request->get('email'))
-            ->setPseudo($request->request->get('pseudo'))
-            ->setWebsite($request->request->get('website'));
-        $em->persist($comment);
-        $em->flush();
-
-
-        return $this->redirectToRoute('detail_article', ['slug' => $parent->getArticle()->getSlug()]);
     }
 }

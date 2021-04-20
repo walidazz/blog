@@ -18,7 +18,7 @@ class CommentType extends AbstractType
         $builder
             ->add('email', EmailType::class,  ['label' => 'Email'])
             ->add('pseudo', TextType::class, ['label' => 'Pseudo'])
-            ->add('website',  UrlType::class, ['label' => 'Site web'])
+            ->add('website',  UrlType::class, ['required' => false , 'label' => 'Site web'])
             ->add('parentid', HiddenType::class, [
                 'mapped' => false
             ])
