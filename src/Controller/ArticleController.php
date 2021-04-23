@@ -29,8 +29,10 @@ class ArticleController extends AbstractController
             $request->query->getInt('page', 1),
             9
         );
+
+        $threeLastArticles = $this->getDoctrine()->getRepository(Article::class)->findThreeLastArticles();
         return $this->render('article/index.html.twig', [
-            'articles' => $articles,
+            'articles' => $articles, 'threeLastArticles' => $threeLastArticles
         ]);
     }
 
@@ -46,7 +48,7 @@ class ArticleController extends AbstractController
             $request->query->getInt('page', 1),
             9
         );
-        return $this->render('article/index.html.twig', compact('articles', 'libelle'));
+        return $this->render('article/index.html.twig', compact('articles'));
     }
 
 
@@ -67,9 +69,11 @@ class ArticleController extends AbstractController
             $em->flush();
             $this->addFlash('success', 'Le commentaire sera publié apres vérification auprès d\'un modérateur !');
         }
+        $threeArticlesByCategory = $em->getRepository(Article::class)->findAllByCategory($article->getCategory()->getLibelle());
 
         return $this->render('shared/_detail.html.twig', [
-            'article' => $article, 'form' => $form->createView(), 'comments' => $repo->findCommentActive($article)
+            'article' => $article, 'form' => $form->createView(), 'comments' => $repo->findCommentActive($article),
+            'threeArticlesByCategory' => $threeArticlesByCategory
         ]);
     }
 }

@@ -18,13 +18,15 @@ class SearchController extends AbstractController
     {
 
         $search = $request->query->get('search');
-
+        
         $query    = $repo->search($search);
         $articles = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
             9
         );
-        return $this->render('article/searchpage.html.twig', compact('articles'));
+
+
+        return $this->render('article/index.html.twig', compact('articles'));
     }
 }
