@@ -907,3 +907,8 @@ a.text-muted:focus {
 #comments form textarea {
   height: 100px;
 }
+
+
+.form-rounded {
+border-radius: 1rem;
+}

@@ -7,7 +7,7 @@ mise en place de ck-editor + elfinder ok_
 systeme de pagination _ ok
 systeme de recherche _ ok
 mettre en place les commentaires _ok
-
+# à faire 24/04
 mise en place des recommendations article sur la page détail
 redimmensionner les images imagine
 mise en place d'un systeme de dons (coffee)

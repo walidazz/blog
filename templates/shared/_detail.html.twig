@@ -107,79 +107,117 @@
     </div>
 </div>
 
-<div class="bootstrap snippets bootdey my-2">
+
+<div class="container bootstrap snippets bootdey">
     <div class="row">
         <div class="col-md-12">
             <div class="blog-comment">
-                <h5 class="text-success">Liste des commentaires</h5>
-
-
-
-
-
+                <h3 class="text-success">Listes des commentaires</h3>
+                <hr />
                 <ul class="comments">
-
                     {% for comment in comments %}
                     {% if comment.parent is null %}
                     <li class="clearfix">
-                        <img src="https://bootdey.com/img/Content/user_3.jpg" class="avatar" alt="">
+                        <img src="{{asset('uploads/user_logo/user.png') | imagine_filter('avatar')}}" class="avatar"
+                            alt="">
                         <div class="post-comments">
                             <p class="meta">{{ comment.createdAt|date("m/d/Y") }} <a
-                                    href="{{comment.website}}">{{comment.pseudo}}</a> dit : <i class="pull-right"><a
+                                    href="{{comment.website}}">{{comment.pseudo}}</a> a dit : <i class="pull-right"><a
                                         class="responseButton" href="#form{{comment.id}}"
                                         data-id="{{comment.id}}"><small>répondre à {{
-                                            comment.pseudo}} </small></a></i></p>
+                                            comment.pseudo}} </small></a></i>
+                            </p>
                             <p>
                                 {{comment.content }}
                             </p>
-                            <div class="panel">
-                                <div class="panel-body">
-                                    <form id="form{{comment.id}}" class="d-none"
-                                        action="{{path('repply_comment', { 'id' : comment.id})}}" method="POST">
-                                        <input name="pseudo" placeholder="pseudo" aria-label="pseudo" />
-                                        <input name="email" placeholder="email" aria-label="email" />
-                                        <input name="website" placeholder="website" aria-label="website" />
-                                        <input name="content" placeholder="content" aria-label="content" />
+                        </div>
+                        <form id="form{{comment.id}}" class="d-none"
+                            action="{{path('repply_comment', { 'id' : comment.id})}}" method="POST">
+                            <div class="row">
 
-                                        <button class="btn btn-outline-success  my-sm-0" type="submit">
-                                            Répondre
-                                        </button>
-                                    </form>
+
+
+                                <div class="col-md-12 mb-1">
+                                    <div class="row mb-1">
+                                        <div class="col-4">
+                                            <input name="pseudo" class="form-control form-rounded " placeholder="pseudo"
+                                                aria-label="pseudo" />
+                                        </div>
+
+                                        <div class="col-4"><input class="form-control form-rounded " name="email"
+                                                placeholder="email" aria-label="email" />
+                                        </div>
+                                        <div class="col-4"><input class="form-control form-rounded " name="website"
+                                                placeholder="website" aria-label="website" />
+                                        </div>
+                                    </div>
+                                    <textarea class="form-control form-rounded" name="content"
+                                        placeholder="Répondre au commentaire de {{comment.pseudo}}" aria-label="content"
+                                        rows="3"></textarea>
+                                    <button class="btn btn-primary btn-sm float-right" type="submit">
+                                        Répondre
+                                    </button>
                                 </div>
+
+
+
                             </div>
 
+                        </form>
 
-                        </div>
+
+
+
+
+
+                        <ul class="comments">
+                            {% for replies in comment.replies %}
+
+                            {% if replies.active > 0 %}
+                            <li class="clearfix">
+                                <img src="{{asset('uploads/user_logo/user.png') | imagine_filter('avatar')}}"
+                                    class="avatar" alt="">
+                                <div class="post-comments">
+                                    <p class="meta">{{ replies.createdAt|date("m/d/Y") }} <a
+                                            href="{{replies.website}}">{{replies.pseudo}}</a> a dit : <i
+                                            class="pull-right"></i></p>
+                                    <p>
+                                        {{replies.content}}
+                                    </p>
+                                </div>
+                            </li>
+                            {% endif %}
+
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
             </div>
         </div>
-        {% endif %}
-
-        {% for replies in comment.replies %}
-
-        {% if replies.active > 0 %}
-
-        <ul class="comments">
-            <li class="clearfix">
-                <img src="https://bootdey.com/img/Content/user_3.jpg" class="avatar" alt="">
-                <div class="post-comments">
-                    <p class="meta">{{ replies.createdAt|date("m/d/Y") }} <a
-                            href="{{replies.website}}">{{replies.pseudo}}</a> dit :
-                    </p>
-                    <p>
-                        {{replies.content}}
-                    </p>
-                </div>
-            </li>
-        </ul>
-        {% endif %}
-
-        {% endfor %}
-
-        {% endfor %}
-        </li>
-        </ul>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 {% endblock %}
