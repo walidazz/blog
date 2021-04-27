@@ -6,9 +6,9 @@
             {% for article in articles %}
 
 
-            <div class="col ">
+            <div class="col p-0 ">
                 <div class="media blog-media bg-light ">
-                    <a href="{{path('detail_article', { 'slug' : article.slug})}}"><img class="d-flex"
+                    <a href="{{path('detail_article', { 'slug' : article.slug})}}"><img class="d-flex img-fluid"
                             src="{{asset('uploads/article_image/' ~ article.coverImage) | imagine_filter('card') }}"
                             alt="Generic placeholder image"></a>
                     <div class="circle">

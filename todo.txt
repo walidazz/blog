@@ -11,7 +11,7 @@ mettre en place les commentaires _ok
 
 mise en place d'un systeme de dons (coffee)
 mise en place des test unitaires & fonctionnels
-ajustement design 
+ajustement design responsiv 
 
 
 design: 
