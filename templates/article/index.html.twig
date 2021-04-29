@@ -5,7 +5,7 @@
 {% block body %}
 
 <div class="row p-0 m-0">
-    <div class="col-8">
+    <div class="col-lg-8">
 
         {% if articles|length > 0 %}
         {% include "shared/_card.html.twig" with {'articles': articles} %}
@@ -22,23 +22,7 @@
 
         <div class="col m-15px-tb blog-aside">
             <!-- Author -->
-            <div class="widget widget-author">
-                <div class="widget-title">
-                    <h3>Author</h3>
-                </div>
-                <div class="widget-body">
-                    <div class="media align-items-center">
-                        <div class="avatar">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png" title="" alt="">
-                        </div>
-                        <div class="media-body">
-                            <h6>Hello, I'm<br> Rachel Roth</h6>
-                        </div>
-                    </div>
-                    <p>I design and develop services for customers of all sizes, specializing in creating stylish,
-                        modern websites, web services and online stores</p>
-                </div>
-            </div>
+            {{Description()}}
 
 
 

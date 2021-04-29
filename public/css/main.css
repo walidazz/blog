@@ -212,11 +212,11 @@
     vertical-align: top;
   }
 }
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
   .media.blog-media .media-body {
     padding: 30px 20px 10px;
   }
-}
+} */
 .media.blog-media .media-body h5 {
   transition: color 0.3s ease;
   margin-bottom: 15px;

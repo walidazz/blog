@@ -21,3 +21,7 @@ index  https://www.bootdey.com/snippets/view/Latest-News-Blog
 detail  https://www.bootdey.com/snippets/view/blog-detail-page 
 
 comment : https://www.bootdey.com/snippets/view/blog-comments
+
+A regler : 
+
+Responsive + navbar ne marche pas
