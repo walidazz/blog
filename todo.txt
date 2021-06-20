@@ -24,4 +24,4 @@ comment : https://www.bootdey.com/snippets/view/blog-comments
 
 A regler : 
 
-Responsive + navbar ne marche pas
+probleme avec sidebar une fois en col-md 
