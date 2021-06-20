@@ -20,7 +20,7 @@ class CommentController extends AbstractController
 
         $parent = $repo->find($id);
 
-        $request->request->get('pseudo');
+       // $request->request->get('pseudo');
         $comment = new Comments();
         $comment->setArticle($parent->getArticle())
             ->setParent($parent)
