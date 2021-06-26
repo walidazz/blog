@@ -46,7 +46,7 @@ class AppFixtures extends Fixture
         for ($j = 0; $j < 10; $j++) {
             # code...
             $article = new Article();
-            $article->setTitre('article numéro ' . $i)
+            $article->setTitre('article numéro ' . $j)
                 ->setContent('Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis explicabo, nesciunt distinctio ratione facilis,         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores ratione, velit ducimus sunt praesentium voluptatum animi! Aut explicabo atque, corporis, molestias officiis numquam quam reprehenderit rerum voluptas illo suscipit itaque?
                 doloribus eius nisi nostrum voluptas earum quasi         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores ratione, velit ducimus sunt praesentium voluptatum animi! Aut explicabo atque, corporis, molestias officiis numquam quam reprehenderit rerum voluptas illo suscipit itaque?
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores ratione, velit ducimus sunt praesentium voluptatum animi! Aut explicabo atque, corporis, molestias officiis numquam quam reprehenderit rerum voluptas illo suscipit itaque?
