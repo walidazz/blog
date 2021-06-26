@@ -43,7 +43,7 @@ class AppFixtures extends Fixture
             $manager->persist($category);
         }
 
-        for ($j = 0; $j < 10; $j++) {
+        for ($j = 1; $j < 11; $j++) {
             # code...
             $article = new Article();
             $article->setTitre('article numéro ' . $j)
