@@ -9,6 +9,13 @@
 
         {% if articles|length > 0 %}
         {% include "shared/_card.html.twig" with {'articles': articles} %}
+        <div class="pagination">
+            <div class="mx-auto">
+        
+        
+                {{ knp_pagination_render(articles) }}
+            </div>
+        </div>
         {% else %}
 
         <div class="container d-flex h-50 ">
@@ -17,6 +24,8 @@
             </div>
         </div>
         {% endif %}
+
+    
     </div>
     <div class="col-4 d-md-none d-lg-block">
 
@@ -35,13 +44,9 @@
         </div>
 
     </div>
-
-</div>
-
-
-<div class="pagination mx-auto">
-    
-        {{ knp_pagination_render(articles) }}
   
 </div>
+
+
+
 {% endblock %}
