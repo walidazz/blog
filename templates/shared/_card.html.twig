@@ -23,14 +23,14 @@
                         <a href="{{path('detail_article', { 'slug' : article.slug})}}" class="post-link">Lire plus</a>
                         <ul>
                             <li> publié par l'admin</li>
-                            <li class="text-right"><a href="blog-post-left-sidebar.html">{% set sum = 0 %}
+                            <li class="text-right"><p>{% set sum = 0 %}
                                     {% for comment in article.comments %}
                                     {% if comment.active > 0 %} {% set sum=sum + 1 %} {% endif %} {% endfor %}
                                     {{sum}} {% if sum > 0 %}
                                     commentaires
                                     {% else %}
                                     commentaire
-                                    {% endif %}</a></li>
+                                    {% endif %}</p></li>
                         </ul>
                     </div>
                 </div>

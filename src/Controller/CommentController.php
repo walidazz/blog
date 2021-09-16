@@ -15,12 +15,12 @@ class CommentController extends AbstractController
     /**
      * @Route("/comment/repplyComment/{id}", name="repply_comment" , methods={"POST"})
      */
-    public function response($id, Request $request, CommentsRepository $repo, EntityManagerInterface $em): Response
+    public function response(Comments $parent, Request $request, EntityManagerInterface $em): Response
     {
+        // $repo = CommentsRepository à mettre en argument
+        // $parent = $repo->find($id);
 
-        $parent = $repo->find($id);
-
-       // $request->request->get('pseudo');
+        // $request->request->get('pseudo');
         $comment = new Comments();
         $comment->setArticle($parent->getArticle())
             ->setParent($parent)
